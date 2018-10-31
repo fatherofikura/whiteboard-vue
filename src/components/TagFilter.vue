@@ -1,0 +1,17 @@
+<template>
+ <div class="tag-filter">
+    <section>
+      <b-field grouped group-multiline>
+        <div class="control">
+          <b-switch>未出社</b-switch>
+        </div>
+        <div class="control">
+          <b-switch>在席</b-switch>
+        </div>
+        <div class="control">
+          <b-switch>帰宅</b-switch>
+        </div>
+      </b-field>
+    </section>
+  </div>
+</template>
