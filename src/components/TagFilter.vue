@@ -11,6 +11,21 @@
         <div class="control">
           <b-switch>帰宅</b-switch>
         </div>
+        <div class="control">
+          <b-switch>出張</b-switch>
+        </div>
+        <div class="control">
+          <b-switch>外出</b-switch>
+        </div>
+        <div class="control">
+          <b-switch>社内</b-switch>
+        </div>
+        <div class="control">
+          <b-switch>休み</b-switch>
+        </div>
+        <div class="control">
+          <b-switch>その他</b-switch>
+        </div>
       </b-field>
     </section>
   </div>
