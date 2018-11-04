@@ -18,13 +18,10 @@
         :paginated="isPaginated"
         :per-page="perPage"
         :current-page.sync="currentPage"
-        default-sort="id">
+        default-sort="id"
+        checkable>
 
         <template slot-scope="props">
-          <b-table-column field="id" label="ID" width="40" sortable numeric>
-            {{ props.row.id }}
-          </b-table-column>
-
           <b-table-column field="status" label="在席状況" sortable centered>
               <span class="tag is-dark is-medium" v-if="props.row.status === '未出社'">
                 {{ props.row.status }}
@@ -32,7 +29,7 @@
               <span class="tag is-success is-medium" v-else-if="props.row.status === '在席'">
                 {{ props.row.status }}
               </span>
-              <span class="tag is-grey is-medium" v-else-if="props.row.status === '帰宅'">
+              <span class="tag is-light is-medium" v-else-if="props.row.status === '帰宅'">
                 {{ props.row.status }}
               </span>
               <span class="tag is-primary is-medium" v-else-if="props.row.status === '出張'">
@@ -47,8 +44,10 @@
               <span class="tag is-danger is-medium" v-else-if="props.row.status === '休み'">
                 {{ props.row.status }}
               </span>
-              <span class="tag is-info is-medium" v-else>
+              <span class="tag is-info is-medium" v-else-if="props.row.status === 'その他'">
                 {{ props.row.status }}
+              </span>
+              <span class="tag is-white is-medium" v-else>
               </span>
 
           </b-table-column>
