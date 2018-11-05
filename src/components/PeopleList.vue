@@ -70,16 +70,23 @@
 </template>
 
 <script>
-  const data = require('@/data/sample.json')
-
+  import people from '@/api/people.js'
   export default {
     data() {
       return {
-        data,
+        data: [],
         isPaginated: true,
         currentPage: 1,
         perPage: 10
       }
+    },
+    methods: {
+      loadAsyncData() {
+        this.data = people.fetch()
+      }
+    },
+    mounted: function () {
+      this.loadAsyncData()
     }
   }
 </script>

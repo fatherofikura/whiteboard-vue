@@ -1,10 +1,11 @@
 import people from '@/api/people.js'
 
-// 商品詳細用のVuexモジュール
+// ホワイトボード表示情報用のストア
 export default {
   namespaced: true,
   state: {
     detail: {},
+    selectedSwitch: {},
   },
   getters: {
     detail: state => state.detail,
