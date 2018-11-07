@@ -5,11 +5,11 @@ export default {
   namespaced: true,
   state: {
     detail: {},
-    selectedSwitch: {},
   },
   getters: {
     detail: state => state.detail,
-  },
+  }
+  /* ストア処理未実装
   mutations: {
     set(state, { detail }) {
       state.detail = detail
@@ -29,4 +29,5 @@ export default {
       commit('clear')
     }
   }
+  */
 }
