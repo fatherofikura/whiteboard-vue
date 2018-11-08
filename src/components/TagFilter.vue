@@ -12,19 +12,19 @@
           <b-switch v-model="isSwitchedGoingHome" type="is-light" @input="doUpdate">帰宅</b-switch>
         </div>
         <div class="control">
-          <b-switch :value="true" type="is-primary">出張</b-switch>
+          <b-switch v-model="isSwitchedBusinessTrip" type="is-primary" @input="doUpdate">出張</b-switch>
         </div>
         <div class="control">
-          <b-switch :value="true" type="is-warning">外出</b-switch>
+          <b-switch v-model="isSwitchedGoingOut" type="is-warning" @input="doUpdate">外出</b-switch>
         </div>
         <div class="control">
-          <b-switch :value="true" type="is-link">社内</b-switch>
+          <b-switch v-model="isSwitchedHouse" type="is-link" @input="doUpdate">社内</b-switch>
         </div>
         <div class="control">
-          <b-switch :value="true" type="is-danger">休み</b-switch>
+          <b-switch v-model="isSwitchedHoliday" type="is-danger" @input="doUpdate">休み</b-switch>
         </div>
         <div class="control">
-          <b-switch :value="true" type="is-info">その他</b-switch>
+          <b-switch v-model="isSwitchedOtherwise" type="is-info" @input="doUpdate">その他</b-switch>
         </div>
       </b-field>
     </section>
@@ -35,20 +35,48 @@
   export default {
     data() {
       return {
-        isSwitchedNotArrival: false,
-        isSwitchedArrival: false,
-        isSwitchedGoingHome: false,
+        isSwitchedNotArrival: true,
+        isSwitchedArrival: true,
+        isSwitchedGoingHome: true,
+        isSwitchedBusinessTrip: true,
+        isSwitchedGoingOut: true,
+        isSwitchedHouse: true,
+        isSwitchedHoliday: true,
+        isSwitchedOtherwise: true,
       }
     },
     methods: {
       doUpdate(event) {
-        // 各Switchの状態をもってディスパッチ
-        var isSwitched = {
-          'isSwitchedNotArrival': this.isSwitchedNotArrival,
-          'isSwitchedArrival': this.isSwitchedArrival,
-          'isSwitchedGoingHome': this.isSwitchedGoingHome
+
+        // フィルタリング状況のチェック
+        var switchedFilters = [];
+        if( this.isSwitchedNotArrival ){
+          switchedFilters.push('未出社')
         }
-        this.$store.dispatch('filters/doUpdate',{ isSwitched })
+        if( this.isSwitchedArrival ){
+          switchedFilters.push('在席')
+        }
+        if( this.isSwitchedGoingHome ){
+          switchedFilters.push('帰宅')
+        }
+        if( this.isSwitchedBusinessTrip ){
+          switchedFilters.push('出張')
+        }
+        if( this.isSwitchedGoingOut ){
+          switchedFilters.push('外出')
+        }
+        if( this.isSwitchedHouse ){
+          switchedFilters.push('社内')
+        }
+        if( this.isSwitchedHoliday ){
+          switchedFilters.push('休み')
+        }
+        if( this.isSwitchedOtherwise ){
+          switchedFilters.push('その他')
+        }
+
+        // 各Switchの状態をもってディスパッチ
+        this.$store.dispatch('filters/doUpdate', switchedFilters)
       },
     }
   }

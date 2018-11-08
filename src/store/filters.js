@@ -2,25 +2,21 @@
 export default {
   namespaced: true,
   state: {
-    isSwitched: {
-      'isSwitchedNotArrival': false,
-      'isSwitchedArrival': false,
-      'isSwitchedGoingHome': false,
-    },
+    switchedFilters: []
   },
   getters: {
     // isSwitchedを使用するゲッター
-    isSwitched(state) { return state.isSwitched },
+    switchedFilters(state) { return state.switchedFilters },
   },
   mutations: {
     // メッセージを変更するミューテーション
-    setIsSwitched(state, payload) {
-      state.isSwitched = payload.isSwitched
+    setSwitchedFilters(state, payload) {
+      state.switchedFilters = payload.switchedFilters
     }
   },
   actions: {
-    doUpdate({ commit }, isSwitched) {
-      commit('setIsSwitched', isSwitched)
+    doUpdate({ commit }, switchedFilters) {
+      commit('setSwitchedFilters', { switchedFilters })
     }
   }
 }

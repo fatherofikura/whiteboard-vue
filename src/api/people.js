@@ -21,23 +21,9 @@ const database = [
 // インポート先で使用できる関数をオブジェクトとしてまとめたもの
 export default {
   fetch(id) { return database },
-  fetchWithFilter(isSwitched) {
-
-    // フィルタリング状況のチェック
-    var targetStatus = [];
-    if( isSwitched['isSwitchedNotArrival'] ){
-      targetStatus.push('未出社')
-    }
-    if( isSwitched['isSwitchedArrival'] ){
-      targetStatus.push('在席')
-    }
-    if( isSwitched['isSwitchedGoingHome'] ){
-      targetStatus.push('帰宅')
-    }
-    console.log('フィルタリング状況:' + targetStatus)
-
-    return database.filter(function(value, index) {
-      return targetStatus.includes(value.status)
+  fetchWithFilter(switchedFilters) {
+    return database.filter(function(value) {
+      return switchedFilters.includes(value.status)
     })
   },
   find(id) { return database.find(el => el.id === id) },

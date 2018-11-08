@@ -81,17 +81,17 @@
         perPage: 10
       }
     },
-    computed: mapGetters('filters', ['isSwitched']),
+    computed: mapGetters('filters', ['switchedFilters']),
     methods: {
       loadAsyncData() {
-        this.data = people.fetchWithFilter(this.isSwitched)
+        this.data = people.fetchWithFilter(this.switchedFilters)
       }
     },
     mounted: function () {
       this.loadAsyncData()
     },
     watch: {
-      isSwitched: function() {
+      switchedFilters: function() {
         this.loadAsyncData()
       }
     }
