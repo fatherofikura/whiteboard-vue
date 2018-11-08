@@ -2,7 +2,7 @@
 export default {
   namespaced: true,
   state: {
-    switchedFilters: []
+    switchedFilters: [ '未出社', '在席', '帰宅', '出張', '外出', '社内', '休み', 'その他'],
   },
   getters: {
     // isSwitchedを使用するゲッター

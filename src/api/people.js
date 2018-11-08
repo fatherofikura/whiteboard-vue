@@ -1,5 +1,5 @@
 // 商品リストの配列
-const database = [
+let database = [
   {id:1,'user':{name:'高橋 竜太郎',position:'部長',extension_number:'(20)602'},status:'在席'},
   {id:2,'user':{name:'前野 耕太',position:'課長',extension_number:'(20)691'},status:'未出社'},
   {id:3,'user':{name:'国分 和敏',position:'課長補佐',extension_number:'(20)512'},status:'帰宅'},
@@ -20,16 +20,9 @@ const database = [
 
 // インポート先で使用できる関数をオブジェクトとしてまとめたもの
 export default {
-  fetch(id) { return database },
-  fetchWithFilter(switchedFilters) {
+  select(switchedFilters) {
     return database.filter(function(value) {
       return switchedFilters.includes(value.status)
     })
   },
-  find(id) { return database.find(el => el.id === id) },
-  asyncFind(id, callback) {
-    setTimeout(()=> {
-      callback(database.find(el => el.id === id))
-    }, 1000)
-  }
 }

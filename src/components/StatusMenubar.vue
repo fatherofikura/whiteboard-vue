@@ -1,7 +1,7 @@
 <template>
   <div class="status-menubar">
     <div class="buttons">
-      <span class="button is-dark is-medium">未出社</span>
+      <span class="button is-dark is-medium" @click="doUpdate">未出社</span>
       <span class="button is-success is-medium">在席</span>
       <span class="button is-light is-medium">帰宅</span>
       <span class="button is-primary is-medium">出張</span>
@@ -12,3 +12,15 @@
     </div>
   </div>
 </template>
+
+<script>
+  import { mapGetters } from 'vuex'
+  export default {
+    computed: mapGetters('checkedList', ['checkedList']),
+    methods: {
+      doUpdate(event) {
+        console.log('doUpdate@StatusMenubar' + this.checkedList)
+      }
+    }
+  }
+</script>

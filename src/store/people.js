@@ -4,10 +4,10 @@ import people from '@/api/people.js'
 export default {
   namespaced: true,
   state: {
-    detail: {},
+    database: {},
   },
   getters: {
-    detail: state => state.detail,
+    database: state => state.database,
   }
   /* ストア処理未実装
   mutations: {

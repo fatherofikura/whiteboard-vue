@@ -18,8 +18,10 @@
         :paginated="isPaginated"
         :per-page="perPage"
         :current-page.sync="currentPage"
+        :checked-rows.sync="checkedRows"
         default-sort="id"
-        checkable>
+        checkable
+        @check="doUpdate">
 
         <template slot-scope="props">
           <b-table-column field="status" label="在席状況" sortable centered>
@@ -65,6 +67,7 @@
           </b-table-column>
         </template>
       </b-table>
+      <b>Total checked</b>: {{ checkedRows }}
     </section>
   </div>
 </template>
@@ -77,14 +80,19 @@
       return {
         data: [],
         isPaginated: true,
+        checkedRows: [],
         currentPage: 1,
-        perPage: 10
+        perPage: 10,
       }
     },
     computed: mapGetters('filters', ['switchedFilters']),
     methods: {
       loadAsyncData() {
-        this.data = people.fetchWithFilter(this.switchedFilters)
+        this.data = people.select(this.switchedFilters)
+      },
+      doUpdate(checkedList) {
+        // リストのチェック状態をもってディスパッチ
+        this.$store.dispatch('checkedList/doUpdate', checkedList)
       }
     },
     mounted: function () {
