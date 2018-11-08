@@ -70,6 +70,7 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
   import people from '@/api/people.js'
   export default {
     data() {
@@ -80,13 +81,19 @@
         perPage: 10
       }
     },
+    computed: mapGetters('filters', ['isSwitched']),
     methods: {
       loadAsyncData() {
-        this.data = people.fetch()
+        this.data = people.fetchWithFilter(this.isSwitched)
       }
     },
     mounted: function () {
       this.loadAsyncData()
+    },
+    watch: {
+      isSwitched: function() {
+        this.loadAsyncData()
+      }
     }
   }
 </script>

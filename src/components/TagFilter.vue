@@ -28,9 +28,6 @@
         </div>
       </b-field>
     </section>
-    <span>isSwitchedNotArrival: {{ isSwitchedNotArrival }}</span><br>
-    <span>isSwitchedArrival: {{ isSwitchedArrival }}</span><br>
-    <span>isSwitchedGoingHome: {{ isSwitchedGoingHome }}</span><br>
   </div>
 </template>
 
