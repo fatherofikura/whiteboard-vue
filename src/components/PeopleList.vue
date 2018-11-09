@@ -21,7 +21,7 @@
         :checked-rows.sync="checkedRows"
         default-sort="id"
         checkable
-        @check="doUpdate">
+        @check="UpdateCheckedList">
 
         <template slot-scope="props">
           <b-table-column field="status" label="在席状況" sortable centered>
@@ -67,7 +67,6 @@
           </b-table-column>
         </template>
       </b-table>
-      <b>Total checked</b>: {{ checkedRows }}
     </section>
   </div>
 </template>
@@ -85,12 +84,17 @@
         perPage: 10,
       }
     },
-    computed: mapGetters('filters', ['switchedFilters']),
+    computed: {
+      ...mapGetters('filters', ['switchedFilters']),
+      ...mapGetters('people', ['database']),
+      ...mapGetters('checkedList', ['checkedList']),
+    },
     methods: {
       loadAsyncData() {
-        this.data = people.select(this.switchedFilters)
+        this.$store.dispatch('people/load', this.switchedFilters)
+        this.data = this.database
       },
-      doUpdate(checkedList) {
+      UpdateCheckedList(checkedList) {
         // リストのチェック状態をもってディスパッチ
         this.$store.dispatch('checkedList/doUpdate', checkedList)
       }
@@ -101,7 +105,10 @@
     watch: {
       switchedFilters: function() {
         this.loadAsyncData()
-      }
+      },
+      checkedList: function() {
+        this.checkedRows = this.checkedList
+      },
     }
   }
 </script>

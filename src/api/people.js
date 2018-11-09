@@ -1,5 +1,5 @@
 // 商品リストの配列
-let database = [
+var database = [
   {id:1,'user':{name:'高橋 竜太郎',position:'部長',extension_number:'(20)602'},status:'在席'},
   {id:2,'user':{name:'前野 耕太',position:'課長',extension_number:'(20)691'},status:'未出社'},
   {id:3,'user':{name:'国分 和敏',position:'課長補佐',extension_number:'(20)512'},status:'帰宅'},
@@ -25,4 +25,12 @@ export default {
       return switchedFilters.includes(value.status)
     })
   },
+  update(checkedList, buttonName){
+    checkedList.forEach(function(value) {
+      const index = database.findIndex(function(check) {
+        return check.id == value.id
+      })
+      database[index].status = buttonName
+    })
+  }
 }

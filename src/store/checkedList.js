@@ -8,14 +8,19 @@ export default {
     checkedList(state) { return state.checkedList },
   },
   mutations: {
-    // メッセージを変更するミューテーション
     setCheckedList(state, payload) {
       state.checkedList = payload.checkedList
+    },
+    clearCheckedList(state) {
+      state.checkedList = []
     }
   },
   actions: {
     doUpdate({ commit }, checkedList) {
       commit('setCheckedList', { checkedList })
-    }
+    },
+    doClear({ commit }) {
+      commit('clearCheckedList')
+    },
   }
 }

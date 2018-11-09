@@ -1,6 +1,6 @@
 import people from '@/api/people.js'
 
-// ホワイトボード表示情報用のストア
+// ホワイトボード上に表示する人の情報を管理するためのストア
 export default {
   namespaced: true,
   state: {
@@ -8,26 +8,26 @@ export default {
   },
   getters: {
     database: state => state.database,
-  }
-  /* ストア処理未実装
+  },
   mutations: {
-    set(state, { detail }) {
-      state.detail = detail
+    set(state, { selecteddata }) {
+      state.database = selecteddata
     },
     clear(state) {
-      state.detail = {}
+      state.database = {}
     },
   },
   actions: {
-    load({ commit }, id) {
-      people.asyncFind(id, detail => {
-        commit('set', { detail })
-      })
-
+    load({ commit }, switchedFilters) {
+      var selecteddata = people.select(switchedFilters)
+      commit('set', { selecteddata })
+    },
+    edit({ commit }, parameter) {
+      // parameterは{CheckedList,ButtonName}
+      people.update(parameter['checkedList'], parameter['buttonName'])
     },
     destroy({ commit }) {
       commit('clear')
     }
   }
-  */
 }
