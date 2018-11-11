@@ -54,16 +54,16 @@
 
           </b-table-column>
 
-          <b-table-column field="user.name" label="氏名" sortable>
-            {{ props.row.user.name }}
+          <b-table-column field="name" label="氏名" sortable>
+            {{ props.row.name }}
           </b-table-column>
 
-          <b-table-column field="user.last_name" label="役職" sortable>
-            {{ props.row.user.position }}
+          <b-table-column field="last_name" label="役職" sortable>
+            {{ props.row.position }}
           </b-table-column>
 
-          <b-table-column field="user.extension_number" label="内線番号" sortable>
-            {{ props.row.user.extension_number }}
+          <b-table-column field="extension_number" label="内線番号" sortable>
+            {{ props.row.extension_number }}
           </b-table-column>
         </template>
       </b-table>

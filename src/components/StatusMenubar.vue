@@ -21,7 +21,6 @@
     },
     methods: {
       updateStatus(buttonName) {
-        console.log('updateStatus:' + buttonName)
         this.$store.dispatch('people/edit', { checkedList: this.checkedList, buttonName: buttonName} )
         this.$store.dispatch('checkedList/doClear')
       }
