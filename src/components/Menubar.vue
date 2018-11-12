@@ -12,7 +12,7 @@
       <div id="departmentList" class="navbar-menu">
         <div class="navbar-start">
           <a class="navbar-item">
-            Home
+            <router-link to="/">Home</router-link>
           </a>
 
           <div class="navbar-item has-dropdown is-hoverable">
@@ -22,10 +22,10 @@
 
             <div class="navbar-dropdown">
               <a class="navbar-item">
-                A開発課
+                <router-link to="/A開発課">A開発課</router-link>
               </a>
               <a class="navbar-item">
-                B設計課
+                <router-link to="/B設計課">B設計課</router-link>
               </a>
             </div>
           </div>

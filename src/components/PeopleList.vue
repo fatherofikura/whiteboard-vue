@@ -1,5 +1,9 @@
 <template>
   <div class="people-list">
+    <div>
+      <h1>{{ this.$route.params.section }}</h1>
+    </div>
+
     <section>
       <b-field grouped group-multiline>
         <b-select v-model="perPage" :disabled="!isPaginated">

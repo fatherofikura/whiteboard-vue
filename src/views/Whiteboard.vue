@@ -1,6 +1,5 @@
 <template>
   <div class="whiteboard">
-    <menubar />
     <tag-filter />
     <people-list />
     <status-menubar />
@@ -8,14 +7,12 @@
 </template>
 
 <script>
-import Menubar from './Menubar'
-import TagFilter from './TagFilter'
-import PeopleList from './PeopleList'
-import StatusMenubar from './StatusMenubar'
+import TagFilter from '@/components/TagFilter'
+import PeopleList from '@/components/PeopleList'
+import StatusMenubar from '@/components/StatusMenubar'
 export default {
   name: 'whiteboard',
   components: {
-    Menubar,
     TagFilter,
     PeopleList,
     StatusMenubar,

@@ -1,21 +1,16 @@
 <template>
   <div id="app">
-    <whiteboard />
+    <menubar />
+    <router-view />
   </div>
 </template>
 
 <script>
-import Whiteboard from './components/Whiteboard'
-
+import Menubar from '@/components/Menubar'
 export default {
   name: 'app',
   components: {
-    Whiteboard
-  },
-  data() {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+    Menubar,
   }
 }
 </script>
