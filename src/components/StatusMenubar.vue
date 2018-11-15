@@ -10,6 +10,24 @@
       <span class="button is-danger is-medium" @click="updateStatus('休み')">休み</span>
       <span class="button is-info is-medium" @click="updateStatus('その他')">その他</span>
     </div>
+
+    <div class="notes">
+      <b-field horizonta>
+        <p class="control">
+          <b-input placeholder="行き先を記入してください。"></b-input>
+        </p>
+        <p class="control">
+          <b-dropdown>
+            <button class="button is-primary" slot="trigger">
+              <b-icon icon="menu-down"></b-icon>
+            </button>
+            <b-dropdown-item>A101会議室</b-dropdown-item>
+            <b-dropdown-item>A201会議室</b-dropdown-item>
+            <b-dropdown-item>A301会議室</b-dropdown-item>
+          </b-dropdown>
+        </p>
+      </b-field>
+    </div>
   </div>
 </template>
 

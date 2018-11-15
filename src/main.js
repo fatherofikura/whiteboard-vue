@@ -6,8 +6,10 @@ import 'buefy/dist/buefy.css'
 import App from './App'
 import store from '@/store.js'
 import router from '@/router.js'
+import { sync } from 'vuex-router-sync'
 
 Vue.use(Buefy)
+sync(store, router)
 
 Vue.config.productionTip = false
 

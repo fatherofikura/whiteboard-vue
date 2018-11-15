@@ -18,8 +18,8 @@ export default {
     },
   },
   actions: {
-    load({ commit }, switchedFilters) {
-      var selecteddata = people.select(switchedFilters)
+    load({ commit }, parameter) {
+      var selecteddata = people.select(parameter.switchedFilters, parameter.sectionName)
       commit('set', { selecteddata })
     },
     edit({ commit }, parameter) {

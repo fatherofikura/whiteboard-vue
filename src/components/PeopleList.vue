@@ -1,9 +1,5 @@
 <template>
   <div class="people-list">
-    <div>
-      <h1>{{ this.$route.params.section }}</h1>
-    </div>
-
     <section>
       <b-field grouped group-multiline>
         <b-select v-model="perPage" :disabled="!isPaginated">
@@ -58,6 +54,10 @@
 
           </b-table-column>
 
+          <b-table-column field="note" label="補足" sortable>
+            {{ props.row.note }}
+          </b-table-column>
+
           <b-table-column field="name" label="氏名" sortable>
             {{ props.row.name }}
           </b-table-column>
@@ -92,10 +92,17 @@
       ...mapGetters('filters', ['switchedFilters']),
       ...mapGetters('people', ['database']),
       ...mapGetters('checkedList', ['checkedList']),
+      sectionName: function() {
+        return this.$store.state.route.params.section
+      }
     },
     methods: {
       loadAsyncData() {
-        this.$store.dispatch('people/load', this.switchedFilters)
+        // this.$store.dispatch('people/load', this.switchedFilters)
+        this.$store.dispatch('people/load', {
+          switchedFilters: this.switchedFilters,
+          sectionName: this.sectionName
+        })
         this.data = this.database
       },
       UpdateCheckedList(checkedList) {
@@ -112,6 +119,9 @@
       },
       checkedList: function() {
         this.checkedRows = this.checkedList
+      },
+      sectionName: function() {
+        this.loadAsyncData()
       },
     }
   }
