@@ -31,6 +31,7 @@
           </div>
         </div>
 
+        <!--- 認証機能未実装のためコメントアウト
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
@@ -43,6 +44,7 @@
             </div>
           </div>
         </div>
+        -->
       </div>
     </nav>
   </div>

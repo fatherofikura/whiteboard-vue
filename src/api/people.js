@@ -30,12 +30,13 @@ export default {
       return switchedFilters.includes(value.status) && value.section==sectionName
     })
   },
-  update(checkedList, buttonName){
+  update(checkedList, buttonName, note){
     checkedList.forEach(function(value) {
       const index = database.findIndex(function(check) {
         return check.id == value.id
       })
       database[index].status = buttonName
+      database[index].note = note
     })
   }
 }

@@ -14,16 +14,16 @@
     <div class="notes">
       <b-field horizonta>
         <p class="control">
-          <b-input placeholder="行き先を記入してください。"></b-input>
+          <b-input placeholder="補足情報を記入してください。" v-model="note"></b-input>
         </p>
         <p class="control">
           <b-dropdown>
             <button class="button is-primary" slot="trigger">
               <b-icon icon="menu-down"></b-icon>
             </button>
-            <b-dropdown-item>A101会議室</b-dropdown-item>
-            <b-dropdown-item>A201会議室</b-dropdown-item>
-            <b-dropdown-item>A301会議室</b-dropdown-item>
+            <b-dropdown-item  @click="changeNote('A101会議室')">A101会議室</b-dropdown-item>
+            <b-dropdown-item  @click="changeNote('A201会議室')">A201会議室</b-dropdown-item>
+            <b-dropdown-item  @click="changeNote('A301会議室')">A301会議室</b-dropdown-item>
           </b-dropdown>
         </p>
       </b-field>
@@ -34,13 +34,21 @@
 <script>
   import { mapGetters } from 'vuex'
   export default {
+    data() {
+      return {
+        note: ''
+      }
+    },
     computed: {
       ...mapGetters('checkedList', ['checkedList']),
     },
     methods: {
       updateStatus(buttonName) {
-        this.$store.dispatch('people/edit', { checkedList: this.checkedList, buttonName: buttonName} )
+        this.$store.dispatch('people/edit', { checkedList: this.checkedList, buttonName: buttonName, note: this.note} )
         this.$store.dispatch('checkedList/doClear')
+      },
+      changeNote(itemName) {
+        this.note = itemName
       }
     }
   }

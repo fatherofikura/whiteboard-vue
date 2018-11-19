@@ -23,8 +23,8 @@ export default {
       commit('set', { selecteddata })
     },
     edit({ commit }, parameter) {
-      // parameterは{CheckedList,ButtonName}
-      people.update(parameter['checkedList'], parameter['buttonName'])
+      // parameterは{CheckedList,ButtonName,note}
+      people.update(parameter['checkedList'], parameter['buttonName'], parameter['note'])
     },
     destroy({ commit }) {
       commit('clear')
